@@ -16,7 +16,7 @@ function App() {
     return (
         <div className="App">
             <Routes>
-                <Route index element={<Greeting name={userName} />} /> {/* Передача имени пользователя */}
+                <Route index element={<Greeting/>} /> {/* Передача имени пользователя */}
             </Routes>
         </div>
     );
