@@ -2,7 +2,7 @@ import './App.css';
 import { useEffect } from "react";
 import { useTelegram } from "./hooks/useTelegram";
 import { Route, Routes } from 'react-router-dom';
-import Greeting from "./components/welcome/welcome.jsx";
+import Greeting from "./components/welcome/welcome.jsx"; // Проверьте правильность пути
 
 function App() {
     const { onToggleButton, tg, user } = useTelegram();
