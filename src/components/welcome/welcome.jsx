@@ -8,7 +8,7 @@ const Welcome = () => {
   const { user } = useTelegram();
   const navigate = useNavigate();
 
-  const handleStartClick = () => {
+  const handleStart = () => {
     navigate('/points');
   };
 
@@ -20,7 +20,11 @@ const Welcome = () => {
         showCursor={false}
       />
       <span className="blinking-cursor">.</span>
-      <button className="start-button" onClick={handleStartClick}>Start</button>
+      <p className="instruction-text">Press and Hold</p>
+      <a className="start-button" onClick={handleStart}>
+        Start
+        <span></span><span></span><span></span><span></span>
+      </a>
     </div>
   );
 };
