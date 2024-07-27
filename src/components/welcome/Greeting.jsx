@@ -1,10 +1,8 @@
 import React from 'react';
 import { ReactTyped } from 'react-typed';
 import './welcome.css';
-import {useTelegram} from "../../hooks/useTelegram";
 
-const Greeting = ({ name }) => {
-  const {user, onClose} = useTelegram();
+const Greeting = ({ user }) => {
   return (
     <div className="greeting-container">
       <ReactTyped
@@ -13,8 +11,8 @@ const Greeting = ({ name }) => {
         showCursor={false}
       />
       <span className={'username'}>
-                    {user?.username}
-                </span>
+        {user?.username}
+      </span>
       <span className="blinking-cursor">.</span>
     </div>
   );
