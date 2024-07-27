@@ -1,0 +1,15 @@
+.points-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+  color: white;
+  font-size: 2rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.points-display {
+  margin-bottom: 20px;
+}
