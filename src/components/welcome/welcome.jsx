@@ -12,9 +12,6 @@ const Greeting = ({ name }) => {
         typeSpeed={40}
         showCursor={false}
       />
-      <span className={'username'}>
-                    {user?.username}
-                </span>
       <span className="blinking-cursor">.</span>
     </div>
   );
