@@ -1,5 +1,6 @@
 .greeting-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -19,4 +20,36 @@
   0% { opacity: 1; }
   50% { opacity: 0; }
   100% { opacity: 1; }
+}
+
+.start-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  color: white;
+  background: none;
+  border: 2px solid white;
+  border-radius: 25px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  transition: color 0.4s;
+}
+
+.start-button:before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, white, transparent);
+  transition: transform 0.4s;
+  transform: rotate(45deg) translateX(-50%);
+  z-index: -1;
+}
+
+.start-button:hover:before {
+  transform: rotate(45deg) translateX(50%);
 }

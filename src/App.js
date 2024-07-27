@@ -2,21 +2,21 @@ import './App.css';
 import { useEffect } from "react";
 import { useTelegram } from "./hooks/useTelegram";
 import { Route, Routes } from 'react-router-dom';
-import Greeting from "./components/welcome/welcome.jsx"; // Проверьте правильность пути
+import Welcome from "./components/welcome/welcome.jsx"; // Импорт Welcome
+import Points from "./components/Points/Points.jsx"; // Импорт Points
 
 function App() {
-    const { onToggleButton, tg, user } = useTelegram();
+    const { tg } = useTelegram();
 
     useEffect(() => {
         tg.ready();
     }, [tg]);
 
-    const userName = user?.username || "User"; // Получение имени пользователя из Telegram
-
     return (
         <div className="App">
             <Routes>
-                <Route index element={<Greeting/>} /> {/* Передача имени пользователя */}
+                <Route index element={<Welcome />} />
+                <Route path="/points" element={<Points />} />
             </Routes>
         </div>
     );
