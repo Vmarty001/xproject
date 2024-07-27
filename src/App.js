@@ -2,7 +2,7 @@ import './App.css';
 import { useEffect } from "react";
 import { useTelegram } from "./hooks/useTelegram";
 import { Route, Routes } from 'react-router-dom';
-import Greeting from "./components/welcome/Greeting";
+import Greeting from "./components/welcome/welcome.jsx"; // Проверьте правильность пути
 
 function App() {
     const { onToggleButton, tg, user } = useTelegram();
@@ -11,10 +11,12 @@ function App() {
         tg.ready();
     }, [tg]);
 
+    const userName = user?.username || "User"; // Получение имени пользователя из Telegram
+
     return (
         <div className="App">
             <Routes>
-                <Route index element={<Greeting user={user} />} /> {/* Передача user как пропс */}
+                <Route index element={<Greeting/>} /> {/* Передача имени пользователя */}
             </Routes>
         </div>
     );
