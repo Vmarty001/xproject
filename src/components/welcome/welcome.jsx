@@ -1,8 +1,10 @@
+// Welcome.jsx
 import React, { useState, useEffect } from 'react';
 import { ReactTyped } from 'react-typed';
 import './welcome.css';
 import { useTelegram } from "../../hooks/useTelegram";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Welcome = () => {
   const { user } = useTelegram();
@@ -24,10 +26,16 @@ const Welcome = () => {
     setStartTime(Date.now());
   };
 
-  const handleEnd = () => {
+  const handleEnd = async () => {
     setIsHeld(false);
     const holdTime = Date.now() - startTime;
     if (holdTime >= 2000) { // 2 секунды удерживания
+      try {
+        await axios.post('http://localhost:3000/add-user', { username: user.username });
+        console.log('User added successfully');
+      } catch (error) {
+        console.error('Error adding user:', error);
+      }
       navigate('/points');
     }
   };
@@ -36,13 +44,13 @@ const Welcome = () => {
     if (isHeld) {
       const timer = setTimeout(() => {
         if (isHeld) {
-          navigate('/points');
+          handleEnd();
         }
       }, 2000);
 
       return () => clearTimeout(timer);
     }
-  }, [isHeld, navigate]);
+  }, [isHeld]);
 
   return (
     <div className="greeting-container">
