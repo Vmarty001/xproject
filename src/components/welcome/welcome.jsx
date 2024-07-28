@@ -28,7 +28,7 @@ const Welcome = () => {
   const handleEnd = async () => {
     setIsHeld(false);
     const holdTime = Date.now() - startTime;
-    await axios.post('http://109.196.164.164:3000/add-user', { username: user?.username });
+    
     if (holdTime >= 2000) { // 2 секунды удерживания
       try {
         // Отправка данных на сервер
@@ -74,7 +74,7 @@ const Welcome = () => {
             onMouseLeave={handleEnd}
             onContextMenu={(e) => e.preventDefault()}
           >
-            Start
+            Verify
             <span></span><span></span><span></span><span></span>
           </a>
         </>
