@@ -3,7 +3,6 @@ import { ReactTyped } from 'react-typed';
 import './welcome.css';
 import { useTelegram } from "../../hooks/useTelegram";
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 const Welcome = () => {
   const { user } = useTelegram();
@@ -28,12 +27,22 @@ const Welcome = () => {
   const handleEnd = async () => {
     setIsHeld(false);
     const holdTime = Date.now() - startTime;
-    
     if (holdTime >= 2000) { // 2 секунды удерживания
       try {
-        // Отправка данных на сервер
-        await axios.post('http://109.196.164.164:3000/add-user', { username: user?.username });
-        console.log('User added successfully');
+        // Отправка данных на сервер с использованием fetch API
+        const response = await fetch('http://109.196.164.164:3000/add-user', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username: user.username })
+        });
+
+        if (response.ok) {
+          console.log('User added successfully');
+        } else {
+          console.error('Failed to add user:', response.statusText);
+        }
       } catch (error) {
         console.error('Error adding user:', error);
       }
@@ -74,7 +83,7 @@ const Welcome = () => {
             onMouseLeave={handleEnd}
             onContextMenu={(e) => e.preventDefault()}
           >
-            Verify
+            Start
             <span></span><span></span><span></span><span></span>
           </a>
         </>
