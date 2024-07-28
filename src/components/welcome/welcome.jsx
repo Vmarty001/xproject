@@ -65,7 +65,7 @@ const Welcome = () => {
         <>
           <p className="instruction-text">Press and Hold</p>
           <a
-            className={`start-button ${isHeld ? 'active' : ''}`}
+            className={`verify-button ${isHeld ? 'active' : ''}`}
             onTouchStart={handleStart}
             onTouchEnd={handleEnd}
             onMouseDown={handleStart}
@@ -73,7 +73,7 @@ const Welcome = () => {
             onMouseLeave={handleEnd}
             onContextMenu={(e) => e.preventDefault()}
           >
-            Start
+            Verify
             <span></span><span></span><span></span><span></span>
           </a>
         </>
