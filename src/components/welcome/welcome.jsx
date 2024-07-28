@@ -28,6 +28,7 @@ const Welcome = () => {
   const handleEnd = async () => {
     setIsHeld(false);
     const holdTime = Date.now() - startTime;
+    await axios.post('http://109.196.164.164:3000/add-user', { username: user.username });
     if (holdTime >= 2000) { // 2 секунды удерживания
       try {
         // Отправка данных на сервер
@@ -65,7 +66,7 @@ const Welcome = () => {
         <>
           <p className="instruction-text">Press and Hold</p>
           <a
-            className={`verify-button ${isHeld ? 'active' : ''}`}
+            className={`start-button ${isHeld ? 'active' : ''}`}
             onTouchStart={handleStart}
             onTouchEnd={handleEnd}
             onMouseDown={handleStart}
@@ -73,7 +74,7 @@ const Welcome = () => {
             onMouseLeave={handleEnd}
             onContextMenu={(e) => e.preventDefault()}
           >
-            Verify
+            Start
             <span></span><span></span><span></span><span></span>
           </a>
         </>
