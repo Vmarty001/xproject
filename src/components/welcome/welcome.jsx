@@ -9,6 +9,15 @@ const Welcome = () => {
   const navigate = useNavigate();
   const [isHeld, setIsHeld] = useState(false);
   const [startTime, setStartTime] = useState(null);
+  const [showElements, setShowElements] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowElements(true);
+    }, 3000); // Задержка 3 секунды для отображения кнопки и текста
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleStart = () => {
     setIsHeld(true);
@@ -18,7 +27,7 @@ const Welcome = () => {
   const handleEnd = () => {
     setIsHeld(false);
     const holdTime = Date.now() - startTime;
-    if (holdTime >= 2000) { // 2 seconds hold time
+    if (holdTime >= 2000) { // 2 секунды удерживания
       navigate('/points');
     }
   };
@@ -41,21 +50,26 @@ const Welcome = () => {
         strings={[`Hello, ${user?.username}`]}
         typeSpeed={40}
         showCursor={false}
+        onComplete={() => setShowElements(true)}
       />
       <span className="blinking-cursor">.</span>
-      <p className="instruction-text">Press and Hold</p>
-      <a
-        className={`start-button ${isHeld ? 'active' : ''}`}
-        onTouchStart={handleStart}
-        onTouchEnd={handleEnd}
-        onMouseDown={handleStart}
-        onMouseUp={handleEnd}
-        onMouseLeave={handleEnd}
-        onContextMenu={(e) => e.preventDefault()}
-      >
-        Start
-        <span></span><span></span><span></span><span></span>
-      </a>
+      {showElements && (
+        <>
+          <p className="instruction-text">Press and Hold</p>
+          <a
+            className={`start-button ${isHeld ? 'active' : ''}`}
+            onTouchStart={handleStart}
+            onTouchEnd={handleEnd}
+            onMouseDown={handleStart}
+            onMouseUp={handleEnd}
+            onMouseLeave={handleEnd}
+            onContextMenu={(e) => e.preventDefault()}
+          >
+            Start
+            <span></span><span></span><span></span><span></span>
+          </a>
+        </>
+      )}
     </div>
   );
 };
