@@ -12,7 +12,7 @@ const Dice = ({ onRollComplete }) => {
         setSide(newSide);
         setRolling(false);
         onRollComplete(newSide);
-      }, 2500); // Увеличено время вращения
+      }, 1500); // Время вращения
       return () => clearTimeout(rollTimeout);
     }
   }, [rolling, onRollComplete]);
@@ -28,47 +28,39 @@ const Dice = ({ onRollComplete }) => {
   return (
     <div className="dice-container">
       <div id="dice" data-side={side} className={rolling ? '' : 'reRoll'}>
-        <div className="side-1 sides">{side === 1 && <div className="dot dot-1">{side}</div>}</div>
-        <div className="side-2 sides">{side === 2 && (
-          <>
-            <div className="dot dot-1">{side}</div>
-            <div className="dot dot-2"></div>
-          </>
-        )}</div>
-        <div className="side-3 sides">{side === 3 && (
-          <>
-            <div className="dot dot-1">{side}</div>
-            <div className="dot dot-2"></div>
-            <div className="dot dot-3"></div>
-          </>
-        )}</div>
-        <div className="side-4 sides">{side === 4 && (
-          <>
-            <div className="dot dot-1">{side}</div>
-            <div className="dot dot-2"></div>
-            <div className="dot dot-3"></div>
-            <div className="dot dot-4"></div>
-          </>
-        )}</div>
-        <div className="side-5 sides">{side === 5 && (
-          <>
-            <div className="dot dot-1">{side}</div>
-            <div className="dot dot-2"></div>
-            <div className="dot dot-3"></div>
-            <div className="dot dot-4"></div>
-            <div className="dot dot-5"></div>
-          </>
-        )}</div>
-        <div className="side-6 sides">{side === 6 && (
-          <>
-            <div className="dot dot-1">{side}</div>
-            <div className="dot dot-2"></div>
-            <div className="dot dot-3"></div>
-            <div className="dot dot-4"></div>
-            <div className="dot dot-5"></div>
-            <div className="dot dot-6"></div>
-          </>
-        )}</div>
+        <div className="side-1 sides">
+          <span className="dot dot-1"></span>
+        </div>
+        <div className="side-2 sides">
+          <span className="dot dot-1"></span>
+          <span className="dot dot-2"></span>
+        </div>
+        <div className="side-3 sides">
+          <span className="dot dot-1"></span>
+          <span className="dot dot-2"></span>
+          <span className="dot dot-3"></span>
+        </div>
+        <div className="side-4 sides">
+          <span className="dot dot-1"></span>
+          <span className="dot dot-2"></span>
+          <span className="dot dot-3"></span>
+          <span className="dot dot-4"></span>
+        </div>
+        <div className="side-5 sides">
+          <span className="dot dot-1"></span>
+          <span className="dot dot-2"></span>
+          <span className="dot dot-3"></span>
+          <span className="dot dot-4"></span>
+          <span className="dot dot-5"></span>
+        </div>
+        <div className="side-6 sides">
+          <span className="dot dot-1"></span>
+          <span className="dot dot-2"></span>
+          <span className="dot dot-3"></span>
+          <span className="dot dot-4"></span>
+          <span className="dot dot-5"></span>
+          <span className="dot dot-6"></span>
+        </div>
       </div>
     </div>
   );

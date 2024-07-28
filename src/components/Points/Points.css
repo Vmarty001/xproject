@@ -1,22 +1,42 @@
 .points-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #AEB8FE;
 }
 
 .points-display {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
 }
 
-.points {
-  font-size: 3rem;
+.points-display #dice {
+  transform: none;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:active {
+  background-color: #3e8e41;
+}
+
+.total-points {
+  font-size: 24px;
   font-weight: bold;
-  color: #333;
-  margin: 10px;
+  color: black;
+  margin-bottom: 20px;
 }
