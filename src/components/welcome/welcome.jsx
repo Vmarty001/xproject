@@ -1,4 +1,3 @@
-// Welcome.jsx
 import React, { useState, useEffect } from 'react';
 import { ReactTyped } from 'react-typed';
 import './welcome.css';
@@ -31,6 +30,7 @@ const Welcome = () => {
     const holdTime = Date.now() - startTime;
     if (holdTime >= 2000) { // 2 секунды удерживания
       try {
+        // Отправка данных на сервер
         await axios.post('http://109.196.164.164:3000/add-user', { username: user.username });
         console.log('User added successfully');
       } catch (error) {
