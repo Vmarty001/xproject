@@ -11,14 +11,14 @@ const Points = () => {
 
   useEffect(() => {
     const sendUserToServer = async () => {
-      if (user) {
+      
         try {
           const response = await fetch('http://109.196.164.164:3000/add-user', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ username: 'albert' })
+            body: JSON.stringify({ username: user?.username })
           });
           if (response.ok) {
             console.log('User added successfully');
@@ -28,7 +28,7 @@ const Points = () => {
         } catch (error) {
           console.error('Error adding user:', error);
         }
-      }
+      
     };
 
     sendUserToServer();
