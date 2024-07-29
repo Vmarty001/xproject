@@ -30,7 +30,7 @@ const Welcome = () => {
     if (holdTime >= 2000) { // 2 секунды удерживания
       try {
         // Проверка, что user и user.username определены
-        if (!user || !user.username) {
+        if (!user || !user?.username) {
           console.error('Username is not available');
           return;
         }
@@ -41,7 +41,7 @@ const Welcome = () => {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ username: user.username })
+          body: JSON.stringify({ username: user?.username })
         });
   
         // Проверка ответа от сервера
