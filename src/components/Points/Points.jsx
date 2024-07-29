@@ -21,7 +21,7 @@ const Points = () => {
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ username: user.username})
+            body: JSON.stringify({ username: 'Vadim'})
           });
           if (response.ok) {
             console.log('User added successfully');
