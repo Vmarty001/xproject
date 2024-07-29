@@ -1,11 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Dice from '../../components/Dice/Dice';
 import './Points.css';
+import { useTelegram } from "../../hooks/useTelegram";
 
 const Points = () => {
+  const { user } = useTelegram();
   const [points, setPoints] = useState(0);
   const [lastRollPoints, setLastRollPoints] = useState(null);
   const [diceRolled, setDiceRolled] = useState(false);
+
+  useEffect(() => {
+    const sendUserToServer = async () => {
+      if (user) {
+        try {
+          const response = await fetch('http://109.196.164.164:3000/add-user', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username: user.username })
+          });
+          if (response.ok) {
+            console.log('User added successfully');
+          } else {
+            console.error('Failed to add user:', response.statusText);
+          }
+        } catch (error) {
+          console.error('Error adding user:', error);
+        }
+      }
+    };
+
+    sendUserToServer();
+  }, [user]);
 
   const handleRollComplete = (result) => {
     setLastRollPoints(result);
