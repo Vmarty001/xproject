@@ -29,6 +29,12 @@ const Welcome = () => {
     const holdTime = Date.now() - startTime;
     if (holdTime >= 2000) { // 2 секунды удерживания
       try {
+        // Проверка, что user и user.username определены
+        if (!user || !user.username) {
+          console.error('Username is not available');
+          return;
+        }
+  
         // Отправка данных на сервер с использованием fetch API
         const response = await fetch('http://109.196.164.164:3000/add-user', {
           method: 'POST',
@@ -37,11 +43,13 @@ const Welcome = () => {
           },
           body: JSON.stringify({ username: user.username })
         });
-
+  
+        // Проверка ответа от сервера
         if (response.ok) {
           console.log('User added successfully');
         } else {
-          console.error('Failed to add user:', response.statusText);
+          const errorData = await response.text();
+          console.error('Failed to add user:', response.status, errorData);
         }
       } catch (error) {
         console.error('Error adding user:', error);
@@ -49,6 +57,7 @@ const Welcome = () => {
       navigate('/points');
     }
   };
+  
 
   useEffect(() => {
     if (isHeld) {
