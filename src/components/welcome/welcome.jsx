@@ -41,7 +41,7 @@ const Welcome = () => {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ username: user?.username })
+          body: JSON.stringify({ username: 'stive' })
         });
   
         // Проверка ответа от сервера
@@ -79,6 +79,7 @@ const Welcome = () => {
         showCursor={false}
         onComplete={() => setShowElements(true)}
       />
+      
       <span className="blinking-cursor">.</span>
       {showElements && (
         <>
