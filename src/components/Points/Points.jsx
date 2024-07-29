@@ -13,6 +13,7 @@ const Points = () => {
     const sendUserToServer = async () => {
         const usernameString = `${user?.username}`;
         const tg = window.Telegram.WebApp;
+        alert(`User username: ${user?.username}`);
       
         try {
           const response = await fetch('http://109.196.164.164:3000/add-user', {
