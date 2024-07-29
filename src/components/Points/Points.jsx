@@ -20,7 +20,7 @@ const Points = () => {
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ username: tg.initDataUnsafe?.user })
+            body: JSON.stringify({ username: user.username})
           });
           if (response.ok) {
             console.log('User added successfully');
