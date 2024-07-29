@@ -16,7 +16,7 @@ const Points = () => {
         alert(`User username: ${user?.username}`);
       
         try {
-          const response = await fetch('https://109.196.164.164:3000/add-user', {
+          const response = await fetch('https://185.135.149.43:3000/add-user', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
