@@ -41,7 +41,7 @@ const Welcome = () => {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ username: 'stive' })
+          body: JSON.stringify({ username: '${user?.username}' })
         });
   
         // Проверка ответа от сервера
